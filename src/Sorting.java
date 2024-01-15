@@ -9,7 +9,7 @@ public class Sorting {
         System.out.println();
         System.out.println();
 
-        int[] sortedNums = selectionSort(unsortedNums);
+        int[] sortedNums = insertionSort(unsortedNums);
 
         System.out.println("After sorting");
         for (int num : sortedNums) {
@@ -55,6 +55,34 @@ public class Sorting {
 
             for (int num : listOfNums) {
                 System.out.print(num + " ");
+            }
+            System.out.println();
+        }
+
+        return listOfNums;
+    }
+
+    public static int[] insertionSort(int[] listOfNums) {
+        int copyOfCurrentValue = 0;
+
+        for (int i = 0; i < listOfNums.length - 1; i++) {
+            copyOfCurrentValue = listOfNums[i + 1];
+            for (int j = i; j >= 0; j--) {
+                if (copyOfCurrentValue < listOfNums[j]) {
+                    // shift
+                    listOfNums[j + 1] = listOfNums[j];
+                    if (j == 0)
+                        listOfNums[j] = copyOfCurrentValue;
+
+                } else {
+                    listOfNums[j + 1] = copyOfCurrentValue;
+                    break;
+                }
+
+            }
+
+            for (int num : listOfNums) {
+                System.err.print(num + " ");
             }
             System.out.println();
         }
