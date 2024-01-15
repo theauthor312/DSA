@@ -18,7 +18,7 @@ public class Sorting {
     }
 
     public static int[] bubbleSort(int[] listOfNums) {
-        /// BUBBLE SORT - O(n)
+        /// BUBBLE SORT - O(n^2)
         int steps = 0;
         int bubble = 0;
         for (int i = 0; i < listOfNums.length - 1; i++) {
