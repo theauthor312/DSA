@@ -63,6 +63,7 @@ public class Sorting {
     }
 
     public static int[] insertionSort(int[] listOfNums) {
+        /// INSERTION SORT
         int copyOfCurrentValue = 0;
 
         for (int i = 0; i < listOfNums.length - 1; i++) {
