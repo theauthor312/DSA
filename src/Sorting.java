@@ -9,10 +9,12 @@ public class Sorting {
         System.out.println();
         System.out.println();
 
-        int[] sortedNums = insertionSort(unsortedNums);
+        // int[] sortedNums = insertionSort(unsortedNums);
+
+        quickSort(unsortedNums, 0, unsortedNums.length - 1);
 
         System.out.println("After sorting");
-        for (int num : sortedNums) {
+        for (int num : unsortedNums) {
             System.out.print(num + " ");
         }
     }
@@ -76,6 +78,7 @@ public class Sorting {
                         listOfNums[j] = copyOfCurrentValue;
 
                 } else {
+                    // position for copyOfCurrentValue has been found
                     listOfNums[j + 1] = copyOfCurrentValue;
                     break;
                 }
@@ -89,5 +92,33 @@ public class Sorting {
         }
 
         return listOfNums;
+    }
+
+    public static void quickSort(int[] listOfNums, int low, int high) {
+        if (low < high) {
+            int pi = partition(listOfNums, low, high);
+
+            quickSort(listOfNums, low, pi - 1);
+            quickSort(listOfNums, pi + 1, high);
+        }
+    }
+
+    private static int partition(int[] arr, int low, int high) {
+        int i = low - 1;
+        int pivot = arr[high];
+
+        for (int j = low; j < high; j++) {
+            if (arr[j] < pivot) {
+                i++;
+                int temp = arr[j];
+                arr[j] = arr[i];
+                arr[i] = temp;
+            }
+        }
+        int temp = arr[i + 1];
+        arr[i + 1] = arr[high];
+        arr[high] = temp;
+
+        return i + 1;
     }
 }
